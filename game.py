@@ -1,6 +1,6 @@
 # Keep imported packages to extend python at the very top.
 from random import randint
-from gameComponents import gameVars, winLose
+from gameComponents import gameVars, winLose, comparison
 
 # best to go imports then variables then functions, and then actual code
 
@@ -8,7 +8,7 @@ from gameComponents import gameVars, winLose
 # player_choice == False
 while gameVars.player_choice is False: 
 	print ("==========*/ Welcome to my ROCK PAPER SCISSORS game! /*==========")
-	print ("I have never lost at Rock Paper Scissors before. I cannot be defeated by a human.")
+	print ("I have never lost this game. I cannot be defeated by a human.")
 	print ("=====================================================================")
 	print ("Your lives:", gameVars.player_lives, "/", gameVars.total_lives)
 	print ("My lives:", gameVars.ai_lives, "/", gameVars.total_lives)
@@ -24,38 +24,14 @@ while gameVars.player_choice is False:
 		print("Quitting already, eh? Begone, then.")
 		exit()
 
+	print ("====================================================")
 	print ("So, you chose " + gameVars.player_choice, ", eh?")
 
 	# ai choice is random pick from the choices array
 	gameVars.ai_choice = gameVars.choices[randint(0, 2)]
 	print("I chose: " + gameVars.ai_choice, "\n")
 
-	if gameVars.ai_choice == gameVars.player_choice: 
-		print("Blast, a draw! I demand we play again!")
-
-	elif gameVars.ai_choice == "rock":
-		if gameVars.player_choice == "scissors":
-			print("YOU FOOL! My rock smashes your feeble scissors! You have lost!")
-			gameVars.player_lives -= 1
-		else:
-			print("DAMN your mighty paper. You have won this round, disgusting human.")
-			gameVars.ai_lives -= 1
-
-	elif gameVars.ai_choice == "paper":
-		if gameVars.player_choice == "rock":
-			print("Your pitiful rock is no match for my all-encompassing paper! You have lost!")
-			gameVars.player_lives -= 1
-		else:
-			print("Your sharp scissors mean nothing to me, a computer! Even if you have won this round.")
-			gameVars.ai_lives -= 1
-
-	elif gameVars.ai_choice == "scissors":
-		if gameVars.player_choice == "paper":
-			print("Your pathetic paper has been torn to shreds by my scissors, pathetic human! You lose!")
-			gameVars.player_lives -= 1
-		else:
-			print("You have won this round, neanderthal. But next time you may not have a rock to defend yourself with!")
-			gameVars.ai_lives -= 1
+	comparison.whowon()
 
 	if gameVars.player_lives == 0:
 		winLose.winorlose("LOST! AHA! You have lost all your mortal lives! You LOSE! I told you you could never defeat me.")
