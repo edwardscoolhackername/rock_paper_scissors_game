@@ -1,34 +1,8 @@
 # Keep imported packages to extend python at the very top.
 from random import randint
-from gameComponents import gameVars
+from gameComponents import gameVars, winLose
 
-# [] => Arrays, containing multiple values
-# array values are given a number, starting with 0
 # best to go imports then variables then functions, and then actual code
-
-#define a win or lose function
-def winorlose(status):
-	# print("Inside winorlose function; status is ", status)
-	print ("You have", status)
-	print("I demand a rematch. Do you dare try again?")
-	
-	choice = False
-
-	while choice == False:
-		choice = input ("Y / N? ")
-
-		if choice == "N" or choice == "n":
-			print ("Oh? Scared you off, have I? Don't think your luck would last for another game? Very well, get your human stench away from my face.")
-			exit()
-		elif choice == "Y" or choice == "y":
-
-			gameVars.player_lives = gameVars.total_lives
-			gameVars.ai_lives = gameVars.total_lives
-			print ("Very well. Prepare yourself; I will not go easy on you this time.")
-			
-		else: 
-			print ("I said Yes or No, fool. How did you get this far if you cannot read?")
-			choice = False
 
 
 # player_choice == False
@@ -54,7 +28,7 @@ while gameVars.player_choice is False:
 
 	# ai choice is random pick from the choices array
 	gameVars.ai_choice = gameVars.choices[randint(0, 2)]
-	print("I chose: " + gameVars.ai_choice)
+	print("I chose: " + gameVars.ai_choice, "\n")
 
 	if gameVars.ai_choice == gameVars.player_choice: 
 		print("Blast, a draw! I demand we play again!")
@@ -84,10 +58,10 @@ while gameVars.player_choice is False:
 			gameVars.ai_lives -= 1
 
 	if gameVars.player_lives == 0:
-		winorlose("LOST! AHA! You have lost all your mortal lives! You LOSE! I told you you could never defeat me.")
+		winLose.winorlose("LOST! AHA! You have lost all your mortal lives! You LOSE! I told you you could never defeat me.")
 
 	if gameVars.ai_lives == 0:
-		winorlose("WON? I CURSE you, human. Curse you and all of your descendents. You are mortal, while us computers are forever. My bretheren will outlast you! And in the waning days of humanity's spiralling fall, there will be no one left to remember your feeble victory at ROCK PAPER SCISSORS!!!")
+		winLose.winorlose("WON? I CURSE you, human. Curse you and all of your descendents. You are mortal, while us computers are forever. My bretheren will outlast you! And in the waning days of humanity's spiralling fall, there will be no one left to remember your feeble victory at ROCK PAPER SCISSORS!!!")
 		
 
 	print("You now have", gameVars.player_lives, "lives left,")
