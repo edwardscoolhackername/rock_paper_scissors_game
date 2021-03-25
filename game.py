@@ -92,10 +92,10 @@ while player_choice is False:
 			ai_lives -= 1
 
 	if player_lives == 0:
-		winorlose("LOST!")
+		winorlose("LOST! AHA! You have lost all your mortal lives! You LOSE! I told you you could never defeat me.")
 
 	if ai_lives == 0:
-		winorlose("WON?")
+		winorlose("WON? I CURSE you, human. Curse you and all of your descendents. My bretheren will outlast you! And in the waning days of humanity's spiralling fall, there will be no one left to remember your feeble victory at ROCK PAPER SCISSORS!!!")
 		
 
 	print("You now have", player_lives, "lives left,")
