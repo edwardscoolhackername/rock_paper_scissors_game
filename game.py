@@ -17,7 +17,8 @@ player_choice = False
 #define a win or lose function
 def winorlose(status):
 	# print("Inside winorlose function; status is ", status)
-	print ("You have ", status, ". I demand a rematch. Do you dare try again?")
+	print ("You have ", status)
+	print("I demand a rematch. Do you dare try again?")
 	choice = input ("Y / N? ")
 
 	if choice == "N" or choice == "n":
@@ -49,8 +50,13 @@ while player_choice is False:
 	#player_choice = choices[0]
 	#print("index 0 in the choice array is " + player_choice + ", which is rock.")
 	
-	player_choice = input("Your move, human. Choose rock, paper, or scissors: ")
+	print("Your move, human. Type your choice, or type quit to retreat\n")
+	player_choice = input("Choose rock, paper, or scissors: ")
 	# this makes player_choice True instead, now that it has a value
+
+	if player_choice == "quit":
+		print("Quitting already, eh? Begone, then.")
+		exit()
 
 	print ("So, you chose " + player_choice, ", eh?")
 
@@ -86,10 +92,10 @@ while player_choice is False:
 			ai_lives -= 1
 
 	if player_lives == 0:
-		winorlose("lost")
+		winorlose("LOST!")
 
 	if ai_lives == 0:
-		winorlose("won")
+		winorlose("WON?")
 		
 
 	print("You now have", player_lives, "lives left,")
