@@ -4,7 +4,12 @@ from random import randint
 
 # [] => Arrays, containing multiple values
 # array values are given a number, starting with 0
+# best to go imports then variables then actual code
 choices = ["rock", "paper", "scissors"]
+
+player_lives = 3
+ai_lives = 3
+total_lives = 3
 
 #version 1, hard coded in
 #player_choice = choices[0]
@@ -18,23 +23,31 @@ ai_choice = choices[randint(0, 2)]
 print("I chose: " + ai_choice)
 
 if ai_choice == player_choice: 
-	print("Blast, a draw!")
+	print("Blast, a draw! I demand we play again!")
 
 elif ai_choice == "rock":
 	if player_choice == "scissors":
 		print("YOU FOOL! My rock smashes your feeble scissors! You have lost!")
+		player_lives -= 1
 	else:
 		print("DAMN your mighty paper. You have won this round, disgusting human.")
+		ai_lives -= 1
 
 elif ai_choice == "paper":
 	if player_choice == "rock":
-		print("Your powerful rock is no match for my all-encompassing paper! You have lost!")
+		print("Your pitiful rock is no match for my all-encompassing paper! You have lost!")
+		player_lives -= 1
 	else:
 		print("Your sharp scissors mean nothing to me, a computer! Even if you have won this round.")
+		ai_lives -= 1
 
 elif ai_choice == "scissors":
 	if player_choice == "paper":
 		print("Your pathetic paper has been torn to shreds by my scissors, pathetic human! You lose!")
+		player_lives -= 1
 	else:
 		print("You have won this round, neanderthal. But next time you may not have a rock to defend yourself with!")
+		ai_lives -= 1
 
+print("You now have", player_lives, "lives left,")
+print("while I have", ai_lives)
